@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>喵~ 页面走失啦 | MeowLand</title>
+    <style>
+        /* 继承主站样式 */
+        :root {
+            --mc-green: #4CAF50;
+            --mc-dark: #1B1B1B;
+            --mc-gold: #FFD700;
+            --pixel-font: 'Press Start 2P', cursive;
+        }
+
+        body {
+            background: linear-gradient(rgba(27,27,27,0.9), rgba(27,27,27,0.9)), url('mc_stone_bg.jpg');
+            color: white;
+            font-family: var(--pixel-font);
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        /* 404容器 */
+        .error-container {
+            padding: 40px;
+            background: rgba(0,0,0,0.85);
+            border: 3px solid var(--mc-green);
+            box-shadow: 0 0 40px rgba(76,175,80,0.3);
+            position: relative;
+            max-width: 800px;
+            margin: 20px;
+        }
+
+        /* 动态数字效果 */
+        .error-code {
+            font-size: 8em;
+            color: var(--mc-green);
+            text-shadow: 0 0 30px rgba(76,175,80,0.5);
+            margin: 20px 0;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* 猫咪元素 */
+        .cat-icon {
+            width: 120px;
+            height: 120px;
+            background: url('data:image/svg+xml;utf8,<svg>...</svg>') no-repeat center;
+            margin: 0 auto;
+        }
+
+        /* 返回按钮 */
+        .home-btn {
+            background: var(--mc-green);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .home-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(76,175,80,0.5);
+        }
+
+        /* 动画效果 */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes sparkle {
+            from { background-position: 0 0; }
+            to { background-position: 100% 100%; }
+        }
+
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            .error-code { font-size: 5em; }
+            .cat-icon { width: 80px; height: 80px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="error-code">404</div>
+        <h1>喵~ 页面被末影人搬走啦！</h1>
+        <p>你寻找的页面可能：</p>
+        <ul style="text-align: left; margin: 20px auto; max-width: 400px;">
+            <li>▶ 被苦力怕炸毁了</li>
+            <li>▶ 掉进虚空了</li>
+            <li>▶ 需要OP权限访问</li>
+        </ul>
+        <button class="home-btn" onclick="location.href='/'">返回主世界</button>
+        
+        <!-- 动态粒子背景 -->
+        <div class="particles"></div>
+    </div>
+
+    <script>
+        // 自动返回计时器
+        let countdown = 10;
+        const timer = setInterval(() => {
+            document.title = `(${countdown}) 喵~ 页面走失啦 | MeowLand`;
+            if(countdown-- <= 0) {
+                clearInterval(timer);
+                location.href = '/';
+            }
+        }, 1000);
+
+        // 动态粒子生成
+        function createParticles() {
+            const container = document.querySelector('.particles');
+            for(let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.style.cssText = `
+                    position: absolute;
+                    width: ${Math.random()*3+1}px;
+                    height: ${Math.random()*3+1}px;
+                    background: ${Math.random() > 0.5 ? var(--mc-green) : var(--mc-gold)};
+                    border-radius: 50%;
+                    left: ${Math.random()*100}%;
+                    top: ${Math.random()*100}%;
+                    animation: sparkle ${Math.random()*3+2}s infinite linear;
+                `;
+                container.appendChild(particle);
+            }
+        }
+        createParticles();
+    </script>
+</body>
+</html>

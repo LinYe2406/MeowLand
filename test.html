@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
+    <title>🐱 猫猫の家服务器规则 - MeowLand</title>
+    <style>
+        :root {
+            --mc-green: #4CAF50;
+            --mc-dark: #1B1B1B;
+            --mc-gold: #FFD700;
+            --pixel-font: 'Press Start 2P', cursive;
+        }
+
+        body {
+            background: linear-gradient(rgba(27,27,27,0.9), rgba(27,27,27,0.9)), url('mc_stone_bg.jpg');
+            color: white;
+            font-family: Arial, sans-serif;
+            line-height: 1.8;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 20px;
+        }
+
+        .rule-container {
+            border: 3px solid var(--mc-green);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 0 30px rgba(76,175,80,0.3);
+        }
+
+        h1, h2, h3 {
+            font-family: var(--pixel-font);
+            color: var(--mc-gold);
+            text-shadow: 0 0 15px rgba(255,215,0,0.3);
+        }
+
+        h2 {
+            border-bottom: 2px solid var(--mc-green);
+            padding-bottom: 0.5rem;
+            margin: 2rem 0 1rem;
+        }
+
+        .rule-list {
+            counter-reset: section;
+            padding-left: 1.5rem;
+        }
+
+        .rule-list li {
+            margin: 1rem 0;
+            padding: 1rem;
+            background: rgba(40,40,40,0.8);
+            border-left: 4px solid var(--mc-green);
+            counter-increment: section;
+        }
+
+        .rule-list li::before {
+            content: counter(section) ". ";
+            color: var(--mc-green);
+            font-weight: bold;
+        }
+
+        .command-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(30,30,30,0.9);
+            margin: 1rem 0;
+        }
+
+        .command-table th, .command-table td {
+            padding: 12px;
+            border: 1px solid var(--mc-green);
+        }
+
+        .command-table th {
+            background: rgba(76,175,80,0.2);
+        }
+
+        code {
+            font-family: var(--pixel-font);
+            background: rgba(0,0,0,0.5);
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+
+        .warning {
+            color: #ff5555;
+            border-left: 4px solid #ff5555;
+            padding: 1rem;
+            margin: 1rem 0;
+            background: rgba(255,85,85,0.1);
+        }
+
+        .construction-steps {
+            list-style-type: decimal;
+            padding-left: 30px;
+            background: rgba(40,40,40,0.8);
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .nav-buttons {
+            position: sticky;
+            top: 20px;
+            background: rgba(40,40,40,0.9);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .nav-button {
+            color: var(--mc-gold);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        .nav-button:hover {
+            background: rgba(76,175,80,0.3);
+        }
+
+        @media (max-width: 768px) {
+            .command-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="rule-container">
+        <h1>🐱 猫猫の家服务器规则 v2.4</h1>
+
+        <nav class="nav-buttons">
+            <a href="#basic" class="nav-button">基本规则</a>
+            <a href="#land" class="nav-button">领地系统</a>
+            <a href="#shop" class="nav-button">商店系统</a>
+            <a href="#punish" class="nav-button">处罚条例</a>
+        </nav>
+
+        <!-- 基本规则 -->
+        <section id="basic">
+            <h2>一、基本原则</h2>
+            <ol class="rule-list">
+                <li>平等原则：欢迎所有玩家，禁止任何形式的歧视行为</li>
+                <li>权限等级：操作员 > 管理员 > 普通玩家</li>
+                <li>账号限制：每人最多注册3个游戏账号</li>
+                <li>严禁使用作弊工具/矿透材质包等第三方程序</li>
+                <li>禁止恶意破坏他人建筑或红石装置</li>
+                <li>领地保护：必须使用/res指令保护建筑</li>
+            </ol>
+        </section>
+
+        <!-- 领地系统 -->
+        <section id="land">
+            <h2>🏰 领地系统指南</h2>
+            
+            <div class="warning">
+                ⚠️ 仅限主世界创建领地，其他维度需特别申请
+            </div>
+
+            <h3>建筑规范</h3>
+            <ol class="rule-list">
+                <li>最小间距：X/Y轴方向48格（3区块）</li>
+                <li>禁止在村庄/神庙等系统建筑周边建设</li>
+                <li>空中建筑超过10×10需提前审批</li>
+                <li>红石设施必须配备开关系统</li>
+                <li>公共区域周边建设需提前报备</li>
+            </ol>
+
+            <h3>领地指令手册</h3>
+            <table class="command-table">
+                <tr>
+                    <th width="25%">指令</th>
+                    <th width="35%">说明</th>
+                    <th>示例</th>
+                </tr>
+                <tr>
+                    <td><code>/res create [名称]</code></td>
+                    <td>创建新领地</td>
+                    <td>/res create myhome</td>
+                </tr>
+                <tr>
+                    <td><code>/res remove [名称]</code></td>
+                    <td>删除领地</td>
+                    <td>/res remove oldhome</td>
+                </tr>
+                <tr>
+                    <td><code>/res padd [玩家]</code></td>
+                    <td>添加权限</td>
+                    <td>/res padd myhome Player1</td>
+                </tr>
+                <!-- 更多指令行... -->
+            </table>
+
+            <h3>选区流程</h3>
+            <ol class="construction-steps">
+                <li>通过<code>菜单</code>获取木锄工具</li>
+                <li>左键设置A点，右键设置B点</li>
+                <li>在选区内输入<code>/res create [名称]</code></li>
+                <li>通过菜单配置权限</li>
+            </ol>
+        </section>
+
+        <!-- 商店系统 -->
+        <section id="shop">
+            <h2>🛒 商店系统指南</h2>
+            
+            <h3>实体商店操作</h3>
+            <ol class="construction-steps">
+                <li>放置箱子并手持待售物品</li>
+                <li>左键点击箱子设置价格</li>
+                <li>放入商品完成创建</li>
+            </ol>
+
+            <h3>物品保护机制</h3>
+            <div class="rule-item">
+                右键功能方块（箱子/熔炉等）放置告示牌即可激活保护
+            </div>
+
+            <h3>快捷商店（Beta）</h3>
+            <pre><code>打开服务器菜单 → 选择"快捷商店" </code></pre>
+        </section>
+
+        <!-- 处罚条例 -->
+        <section id="punish">
+            <h2>⚖️ 处罚条例</h2>
+            <table class="command-table">
+                <tr>
+                    <th>违规等级</th>
+                    <th>处理措施</th>
+                    <th>申诉时效</th>
+                </tr>
+                <tr>
+                    <td>轻度</td>
+                    <td>警告+行为记录</td>
+                    <td>7日</td>
+                </tr>
+                <tr>
+                    <td>中度</td>
+                    <td>封禁7-30天</td>
+                    <td>3日</td>
+                </tr>
+                <tr>
+                    <td>严重</td>
+                    <td>永久封禁</td>
+                    <td>不可申诉</td>
+                </tr>
+            </table>
+        </section>
+
+        <footer style="margin-top: 3rem; opacity: 0.8;">
+            <p>最后更新：2024-07-11 | 规则解释权归管理组所有</p>
+            <p>编辑：JC.Tan</p>
+        </footer>
+    </div>
+
+    <script>
+        // 平滑滚动
+        document.querySelectorAll('.nav-button').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // 章节激活状态
+        window.addEventListener('scroll', () => {
+            document.querySelectorAll('section').forEach(section => {
+                const rect = section.getBoundingClientRect();
+                if(rect.top <= 150 && rect.bottom >= 150) {
+                    document.querySelector(`a[href="#${section.id}"]`)
+                        .style.background = 'rgba(76,175,80,0.3)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
